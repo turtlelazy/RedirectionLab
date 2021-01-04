@@ -5,16 +5,19 @@ public class MakeStars {
         Scanner n = new Scanner(System.in);
         
         while(n.hasNextLine()) {
-            String starsInCurrentLine = "";
             Scanner x = new Scanner(n.nextLine());
-            while(x.hasNext()) {
-
-                for(int i = 0; i < x.next().length(); i ++) {
-                    starsInCurrentLine += "*";
+            String iterationSum = "";
+            while(x.hasNext()){
+                String current = x.next();
+                for(int i = 0; i < current.length();i++){
+                    iterationSum += "*";
                 }
-                starsInCurrentLine += " ";
-
+                if(x.hasNext()){
+                    iterationSum += " ";
+                }
             }
+            System.out.println(iterationSum);
+            
         }
     }
 }
