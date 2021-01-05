@@ -1,6 +1,8 @@
+import java.util.Scanner;
+
 public class PigLatin {
     public static void main(String[] args){
-        
+        /*
         String[] words = {"the", "check", "skee","emu","grade","*emu", "4chan", 
         "fish!", "fish", "the.", "cat!", "amazing?", "apple%"};
 
@@ -10,16 +12,18 @@ public class PigLatin {
             System.out.println(pigLatinBest(words[i]).equals(wordsLatin[i]));
         }
         
-        /*
+        
         String[] characterTests = {"*","a","b","c","."};
         for(int i = 0; i <characterTests.length;i++){
             System.out.println(isChar(characterTests[i],0));
         }
         */
+        Scanner n = new Scanner(System.in);
+        pigLatinTextBlock(n);
     }
     
     public static String pigLatinSimple(String s) {
-        String sCopy = s;
+        String sCopy = s.toLowerCase();
         char[] vowels = {'a','e','i','o','u'};
         for(int i = 0;i<vowels.length;i++) {
             if(s.charAt(0) == vowels[i]) {
@@ -34,9 +38,9 @@ public class PigLatin {
     }
 
     public static String pigLatin(String s){
-        String sCopy = s;
+        String sCopy = s.toLowerCase();
 
-        if(s.length() >= 2 && diagraphCheck(s)){
+        if(sCopy.length() >= 2 && diagraphCheck(sCopy)){
             sCopy = sCopy.substring(2) +sCopy.substring(0,2)+ "ay";
         }
         else{
@@ -48,7 +52,7 @@ public class PigLatin {
     }
 
     public static String pigLatinBest(String s) {
-        String sCopy = s;
+        String sCopy = s.toLowerCase();
 
         if(isChar(sCopy,0) ){
             return sCopy;
@@ -84,8 +88,36 @@ public class PigLatin {
         return ((checkChar > 122 || checkChar < 65) || (checkChar > 90 && checkChar < 97));
     }
 
-    public static String pigLatinTextBlock(Scanner n){
-        return "";
+    public static void pigLatinTextBlock(Scanner n){
+        while (n.hasNextLine()) {
+            Scanner x = new Scanner(n.nextLine());
+            String iterationSum = "";
+            while (x.hasNext()) {
+                String current = x.next();
+                iterationSum += pigLatinBest(current);
+                if(x.hasNext()){
+                    iterationSum += " ";
+                }
+            }
+            System.out.println(iterationSum);
+
+        }
+    }
+
+    public static void test(Scanner n){
+        while (n.hasNextLine()) {
+            Scanner x = new Scanner(n.nextLine());
+            String iterationSum = "";
+            while (x.hasNext()) {
+                String current = x.next();
+                iterationSum += current;
+                if (x.hasNext()) {
+                    iterationSum += " ";
+                }
+            }
+            System.out.println(iterationSum);
+
+        }
     }
 
 }
