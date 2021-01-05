@@ -48,4 +48,22 @@ public class PigLatin {
         }
         return false;
     }
+
+    public static boolean isChar(String s, int i){
+        char checkChar = s.charAt(i);
+        return (checkChar > 122 || checkChar < 65 || (checkChar> 90 && checkChar<97) );
+    }
+
+    public static String pigLatinBest(String s) {
+        String sCopy = s;
+
+        char firstChar = sCopy.charAt(0);
+        if(isChar(sCopy,0) ){
+            return sCopy;
+        }
+        else if(isChar(sCopy, s.length()-1)){
+            
+        }
+
+    }
 }
