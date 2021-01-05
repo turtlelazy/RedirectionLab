@@ -1,9 +1,9 @@
 public class PigLatin {
     public static void main(String[] args){
-        String[] words = {"mock", "pie", "david","aaron"};
-        String[] wordsLatin = { "ockmay","iepay","avidday", "aaronhay"};
+        String[] words = {"the", "check", "skee","emu","grade"};
+        String[] wordsLatin = { "ethay","eckchay","eeskay", "emuhay","adegray"};
         for(int i = 0; i < words.length;i++){
-            System.out.println(pigLatinSimple(words[i]).equals(wordsLatin[i]));
+            System.out.println(pigLatin(words[i]));
         }
     }
     
@@ -24,6 +24,15 @@ public class PigLatin {
 
     public static String pigLatin(String s){
         String sCopy = s;
+
+        if(s.length() > 2 && diagraphCheck(s)){
+            sCopy = sCopy.substring(0,2) + sCopy.substring(2) + "ay";
+        }
+        else{
+            sCopy = pigLatinSimple(sCopy);
+        }
+        
+        return sCopy;
         
     }
 
