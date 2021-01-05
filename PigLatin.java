@@ -36,24 +36,6 @@ public class PigLatin {
         
     }
 
-    public static boolean diagraphCheck(String s){
-        String[] diagraphs = {"bl", "br", "ch", "ck", "cl", "cr", "dr", "fl", "fr", 
-        "gh", "gl", "gr", "ng", "ph", "pl", "pr", "qu", "sc", "sh", "sk", "sl", "sm", 
-        "sn", "sp", "st", "sw", "th", "tr", "tw", "wh", "wr"};
-
-        for(int i = 0; i < diagraphs.length;i++){
-            if(s.substring(0,2).equals(diagraphs[i])){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public static boolean isChar(String s, int i){
-        char checkChar = s.charAt(i);
-        return (checkChar > 122 || checkChar < 65 || (checkChar> 90 && checkChar<97) );
-    }
-
     public static String pigLatinBest(String s) {
         String sCopy = s;
 
@@ -61,9 +43,34 @@ public class PigLatin {
         if(isChar(sCopy,0) ){
             return sCopy;
         }
-        else if(isChar(sCopy, s.length()-1)){
-            
+        else if(isChar(sCopy, sCopy.length()-1)){
+            char punc = sCopy.charAt(sCopy.length()-1);
+            sCopy = sCopy.substring(0,sCopy.length()-1);
+            sCopy += punc;
+            return sCopy;
+
         }
 
+        return pigLatin(sCopy);
+
     }
+
+    //helper functions
+    public static boolean diagraphCheck(String s) {
+        String[] diagraphs = { "bl", "br", "ch", "ck", "cl", "cr", "dr", "fl", "fr", "gh", "gl", "gr", "ng", "ph", "pl",
+                "pr", "qu", "sc", "sh", "sk", "sl", "sm", "sn", "sp", "st", "sw", "th", "tr", "tw", "wh", "wr" };
+
+        for (int i = 0; i < diagraphs.length; i++) {
+            if (s.substring(0, 2).equals(diagraphs[i])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isChar(String s, int i) {
+        char checkChar = s.charAt(i);
+        return (checkChar > 122 || checkChar < 65 || (checkChar > 90 && checkChar < 97));
+    }
+
 }
