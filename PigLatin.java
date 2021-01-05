@@ -1,10 +1,21 @@
 public class PigLatin {
     public static void main(String[] args){
-        String[] words = {"the", "check", "skee","emu","grade"};
-        String[] wordsLatin = { "ethay","eckchay","eeskay", "emuhay","adegray"};
+        
+        String[] words = {"the", "check", "skee","emu","grade","*emu", "4chan", 
+        "fish!", "fish", "the.", "cat!", "amazing?", "apple%"};
+
+        String[] wordsLatin = { "ethay","eckchay","eeskay", "emuhay","adegray", 
+        "*emu", "4chan", "ishfay!", "ishfay", "ethay.", "atcay!", "amazinghay?", "applehay%"};
         for(int i = 0; i < words.length;i++){
-            System.out.println(pigLatin(words[i]).equals(wordsLatin[i]));
+            System.out.println(pigLatinBest(words[i]).equals(wordsLatin[i]));
         }
+        
+        /*
+        String[] characterTests = {"*","a","b","c","."};
+        for(int i = 0; i <characterTests.length;i++){
+            System.out.println(isChar(characterTests[i],0));
+        }
+        */
     }
     
     public static String pigLatinSimple(String s) {
@@ -39,13 +50,13 @@ public class PigLatin {
     public static String pigLatinBest(String s) {
         String sCopy = s;
 
-        char firstChar = sCopy.charAt(0);
         if(isChar(sCopy,0) ){
             return sCopy;
         }
         else if(isChar(sCopy, sCopy.length()-1)){
             char punc = sCopy.charAt(sCopy.length()-1);
             sCopy = sCopy.substring(0,sCopy.length()-1);
+            sCopy = pigLatin(sCopy);
             sCopy += punc;
             return sCopy;
 
@@ -70,7 +81,11 @@ public class PigLatin {
 
     public static boolean isChar(String s, int i) {
         char checkChar = s.charAt(i);
-        return (checkChar > 122 || checkChar < 65 || (checkChar > 90 && checkChar < 97));
+        return ((checkChar > 122 || checkChar < 65) || (checkChar > 90 && checkChar < 97));
+    }
+
+    public static String pigLatinTextBlock(Scanner n){
+        return "";
     }
 
 }
