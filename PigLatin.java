@@ -3,7 +3,7 @@ public class PigLatin {
         String[] words = {"the", "check", "skee","emu","grade"};
         String[] wordsLatin = { "ethay","eckchay","eeskay", "emuhay","adegray"};
         for(int i = 0; i < words.length;i++){
-            System.out.println(pigLatin(words[i]));
+            System.out.println(pigLatin(words[i]).equals(wordsLatin[i]));
         }
     }
     
@@ -25,8 +25,8 @@ public class PigLatin {
     public static String pigLatin(String s){
         String sCopy = s;
 
-        if(s.length() > 2 && diagraphCheck(s)){
-            sCopy = sCopy.substring(0,2) + sCopy.substring(2) + "ay";
+        if(s.length() >= 2 && diagraphCheck(s)){
+            sCopy = sCopy.substring(2) +sCopy.substring(0,2)+ "ay";
         }
         else{
             sCopy = pigLatinSimple(sCopy);
