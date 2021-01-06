@@ -18,15 +18,17 @@ public class PigLatin {
             System.out.println(isChar(characterTests[i],0));
         }
         */
+        
         Scanner n = new Scanner(System.in);
         pigLatinTextBlock(n);
+        
     }
     
     public static String pigLatinSimple(String s) {
         String sCopy = s.toLowerCase();
         char[] vowels = {'a','e','i','o','u'};
         for(int i = 0;i<vowels.length;i++) {
-            if(s.charAt(0) == vowels[i]) {
+            if(sCopy.charAt(0) == vowels[i]) {
                 sCopy += "hay";
                 return sCopy;
             }
@@ -99,7 +101,10 @@ public class PigLatin {
                     iterationSum += " ";
                 }
             }
-            System.out.println(iterationSum);
+            System.out.print(iterationSum);
+            if(n.hasNextLine()){
+                System.out.println("");
+            }
 
         }
     }
